@@ -12,7 +12,7 @@ NedmDetectorParameters::NedmDetectorParameters() {
 void NedmDetectorParameters::SetDefaults() {
 
     G4double cell_x = 5.08*cm;
-    G4double cell_y = 0.635*cm;
+    G4double cell_y = 0.3175*cm;
     G4double cell_z = 20.64*cm;
 
     cell_size_ = G4ThreeVector(cell_x,cell_y,cell_z);
