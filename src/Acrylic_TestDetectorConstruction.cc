@@ -91,127 +91,26 @@ G4VPhysicalVolume* Acrylic_TestDetectorConstruction::ConstructDetector()
     fExperimentalHall_log->SetVisAttributes(G4VisAttributes::Invisible);
     
     
-    ConstructCellPlates();
-    
-    //if (fParams->outer_reflector()) ConstructSquareTubeReflector();
-    if (fParams->outer_reflector()) ConstructFullTentReflector();
-    
+    new NedmCellSide(0,G4ThreeVector(0.,0.,0.),fExperimentalHall_log,0);
+    ConstructPhotonDet();
     
     return fExperimentalHall_phys;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void Acrylic_TestDetectorConstruction::ConstructCellPlates()
+void Acrylic_TestDetectorConstruction::ConstructPhotonDet()
 {
-    // Rotation - use if needed
-    G4RotationMatrix* rotX = new G4RotationMatrix();
-    rotX->rotateX(180*deg);
+    G4Box* photDet_Solid = new G4Box("photDet",
+                                      2*fParams->cell_size().x(),
+                                      .1*mm,
+                                      2*fParams->cell_size().z());
     
-    new NedmCellSide(rotX,G4ThreeVector(0.,0.,0.),fExperimentalHall_log,0);
-        
- 
-}
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void Acrylic_TestDetectorConstruction::ConstructSquareTubeReflector()
-{
-    // Reflector Wrapping
-    G4Box* OuterReflector = new G4Box("OuterReflector",8.*cm,8.*cm,fParams->cell_size().z());
-    G4Box* InnerReflector = new G4Box("InnerReflector",7.*cm,7.*cm,fParams->cell_size().z());
-    G4SubtractionSolid* SolidReflector = new G4SubtractionSolid("Reflector",OuterReflector,InnerReflector);
+    G4LogicalVolume* photonDet_log = new G4LogicalVolume(photDet_Solid,G4Material::GetMaterial("PMMA"),"photDet");
     
-    G4LogicalVolume* Reflector_Log = new G4LogicalVolume(SolidReflector, G4Material::GetMaterial("PMMA"), "Reflector");
-    
-    
-    // Photon Energies for which mirror properties will be given
-    const G4int kEnergies = 3;
-    G4double the_photon_energies_[kEnergies] = {2.034*eV, 4.136*eV, 16*eV};
-    
-    // Optical Surface for mirror
-    G4OpticalSurface* mirror_surface_ =
-    new G4OpticalSurface("MirrorSurface", glisur, groundfrontpainted,
-                         dielectric_dielectric);
-    
-    // Reflectivity of mirror for each photon energy
-    G4double mirror_REFL[kEnergies] = {0.998, 0.998, 0.998};
-    
-    //Table of Surface Properties for Mirror
-    G4MaterialPropertiesTable* mirrorSurfaceProperty = new G4MaterialPropertiesTable();
-    mirrorSurfaceProperty->AddProperty("REFLECTIVITY", the_photon_energies_, mirror_REFL, kEnergies);
-    mirror_surface_->SetMaterialPropertiesTable(mirrorSurfaceProperty);
-
-    new G4LogicalSkinSurface("Reflector_surface", Reflector_Log, mirror_surface_);
-    
-    
-    G4VisAttributes* ReflectVis=new G4VisAttributes(G4Color(1.0,1.0,1.0));
-    ReflectVis->SetVisibility(true);
-    ReflectVis->SetForceWireframe(true);
-    Reflector_Log->SetVisAttributes(ReflectVis);
-    
-    new G4PVPlacement(0,                            //no rotation
-                      G4ThreeVector(),              //at (0,0,0)
-                      Reflector_Log,                     //its logical volume
-                      "Reflector",            //its name
-                      fExperimentalHall_log,                //its mother  volume
-                      false,                        //no boolean operation
-                      0);                            //copy number
+    new G4PVPlacement(0,G4ThreeVector(0,-4*fParams->cell_size().y(),0),photonDet_log,"photonDet",fExperimentalHall_log,false,0);
 
 }
-
-
-void Acrylic_TestDetectorConstruction::ConstructFullTentReflector()
-{
-    // Reflector Wrapping
-    G4Box* BottomSolid = new G4Box("BottomReflector",2*fParams->cell_size().x(),0.1*cm,fParams->cell_size().z());
-    
-    
-    G4double topReflRad = 2.*fParams->cell_size().x();
-    G4Tubs* TopSolid = new G4Tubs("InnerReflector",topReflRad,topReflRad+.1*cm,fParams->cell_size().z(),.215*pi,.57*pi);
-
-    G4UnionSolid* SolidReflector = new G4UnionSolid("Reflector", BottomSolid, TopSolid,0,G4ThreeVector(0.,-5./8.*topReflRad,0.));
-    
-    
-    G4LogicalVolume* Reflector_Log = new G4LogicalVolume(SolidReflector, G4Material::GetMaterial("PMMA"), "Reflector");
-    
-    
-    // Photon Energies for which mirror properties will be given
-    const G4int kEnergies = 3;
-    G4double the_photon_energies_[kEnergies] = {2.034*eV, 4.136*eV, 16*eV};
-    
-    // Optical Surface for mirror
-    G4OpticalSurface* mirror_surface_ =
-    new G4OpticalSurface("MirrorSurface", glisur, groundfrontpainted,
-                         dielectric_dielectric);
-    
-    // Reflectivity of mirror for each photon energy
-    G4double mirror_REFL[kEnergies] = {0.998, 0.998, 0.998};
-    
-    //Table of Surface Properties for Mirror
-    G4MaterialPropertiesTable* mirrorSurfaceProperty = new G4MaterialPropertiesTable();
-    mirrorSurfaceProperty->AddProperty("REFLECTIVITY", the_photon_energies_, mirror_REFL, kEnergies);
-    mirror_surface_->SetMaterialPropertiesTable(mirrorSurfaceProperty);
-    
-    new G4LogicalSkinSurface("Reflector_surface", Reflector_Log, mirror_surface_);
-    
-    
-    G4VisAttributes* ReflectVis=new G4VisAttributes(G4Color(1.0,1.0,1.0));
-    ReflectVis->SetVisibility(true);
-    ReflectVis->SetForceWireframe(true);
-    Reflector_Log->SetVisAttributes(ReflectVis);
-    
-    G4ThreeVector reflectorPos = G4ThreeVector(0.,-2*fParams->cell_size().y(),0.);
-    
-    new G4PVPlacement(0,                            //no rotation
-                      reflectorPos,              //at (0,0,0)
-                      Reflector_Log,                     //its logical volume
-                      "Reflector",            //its name
-                      fExperimentalHall_log,                //its mother  volume
-                      false,                        //no boolean operation
-                      0);                            //copy number
-    
-}
-
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void Acrylic_TestDetectorConstruction::ConstructSDandField() {}
