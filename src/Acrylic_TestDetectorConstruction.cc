@@ -108,7 +108,7 @@ void Acrylic_TestDetectorConstruction::ConstructPhotonDet()
     
     G4LogicalVolume* photonDet_log = new G4LogicalVolume(photDet_Solid,G4Material::GetMaterial("PMMA"),"photDet");
     
-    new G4PVPlacement(0,G4ThreeVector(0,-4*fParams->cell_size().y(),0),photonDet_log,"photonDet",fExperimentalHall_log,false,0);
+    new G4PVPlacement(0,G4ThreeVector(0,-4*fParams->cell_size().y(),0),photonDet_log,"photDet",fExperimentalHall_log,false,0);
 
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

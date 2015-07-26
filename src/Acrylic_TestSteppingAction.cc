@@ -35,14 +35,13 @@ void Acrylic_TestSteppingAction::UserSteppingAction(const G4Step* aStep)
         thePrePVname  = thePrePV->GetName();
         thePostPVname = thePostPV->GetName();
     }
-    
-    
+        
     if (thePostPVname=="photDet")
     {
         G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
         analysisManager->FillH1(0, 2);
     }
-    
+ 
 }
 

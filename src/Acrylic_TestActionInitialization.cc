@@ -3,7 +3,7 @@
 #include "GPSPrimaryGeneratorAction.hh"
 
 #include "Acrylic_TestRunAction.hh"
-//#include "Acrylic_TestEventAction.hh"
+#include "Acrylic_TestEventAction.hh"
 #include "Acrylic_TestSteppingAction.hh"
 //#include "Acrylic_TestStackingAction.hh"
 #include "Acrylic_TestTrackingAction.hh"
@@ -34,7 +34,7 @@ void Acrylic_TestActionInitialization::Build() const
     
     SetUserAction(new GPSPrimaryGeneratorAction());
     
-    //SetUserAction(new Acrylic_TestEventAction());
+    SetUserAction(new Acrylic_TestEventAction());
     
 //    SetUserAction(new Acrylic_TestStackingAction());
     
