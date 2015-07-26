@@ -50,6 +50,7 @@ set(EXAMPLEB1_SCRIPTS
   gui.mac
   icons.mac
   test.mac
+  trans.mac
   )
 
 foreach(_script ${EXAMPLEB1_SCRIPTS})
