@@ -66,7 +66,7 @@ void NedmCellSide::ConstructTPBInterface() {
                                           fTPB_Thickness,
                                           fCell_Size.z());
     
-    G4LogicalVolume* TPBInterface_log = new G4LogicalVolume(TPBInterface_solid,G4Material::GetMaterial("TPBDopedPS"),"TPBInterface");
+    G4LogicalVolume* TPBInterface_log = new G4LogicalVolume(TPBInterface_solid,G4Material::GetMaterial("TPB"),"TPBInterface");
 
     G4ThreeVector TPBInterface_pos = G4ThreeVector(0.,fCell_Size.y()-fTPB_Thickness,0.);
     
