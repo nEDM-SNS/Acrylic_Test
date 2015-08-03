@@ -66,7 +66,7 @@ void NedmCellSide::ConstructTPBInterface() {
                                           fTPB_Thickness,
                                           fCell_Size.z());
     
-    G4LogicalVolume* TPBInterface_log = new G4LogicalVolume(TPBInterface_solid,G4Material::GetMaterial("TPB"),"TPBInterface");
+    G4LogicalVolume* TPBInterface_log = new G4LogicalVolume(TPBInterface_solid,G4Material::GetMaterial("TPB_inner"),"TPBInterface");
 
     G4ThreeVector TPBInterface_pos = G4ThreeVector(0.,fCell_Size.y()-fTPB_Thickness,0.);
     
@@ -80,6 +80,31 @@ void NedmCellSide::ConstructTPBInterface() {
     TPBInterface_log->SetVisAttributes(tpbVis);
 
     
+    // Create outer TPB layer with low index of refraction
+    
+    G4double TPB_outerThickness = fTPB_outerFraction*fTPB_Thickness;
+    
+    G4Box* TPBInterface_outer_solid = new G4Box("TPBInterface_outer",
+                                          fCell_Size.x(),
+                                          TPB_outerThickness,
+                                          fCell_Size.z());
+
+    
+    G4LogicalVolume* TPBInterface_outer_log = new G4LogicalVolume(TPBInterface_outer_solid,G4Material::GetMaterial("TPB_outer"),"TPBInterface_outer");
+    
+    G4ThreeVector TPBInterface_outer_pos = G4ThreeVector(0.,fTPB_Thickness-TPB_outerThickness,0.);
+    
+    new G4PVPlacement(0,TPBInterface_outer_pos,
+                      TPBInterface_outer_log,
+                      "TPBInterface_outer",
+                      TPBInterface_log,false,0);
+    
+    G4VisAttributes* tpbOuterVis=new G4VisAttributes(G4Color(1.0,1.0,0.0));
+    tpbOuterVis->SetVisibility(true);
+    TPBInterface_outer_log->SetVisAttributes(tpbOuterVis);
+
+
+
 }
 
 void NedmCellSide::ConstructEmbeddedFibers() {
@@ -102,6 +127,8 @@ void NedmCellSide::CopyValues()
     
     // Arbitrary thickness for now, shouldn't have effect, fix later
     fTPB_Thickness = 0.001*cm;
+    // Thickness of TPB layer outside optical medium
+    fTPB_outerFraction = 0.1;
     
     fEmbedded_fibers = params->embedded_fibers();
     fTPB_On = params->tpb_layer_on();
