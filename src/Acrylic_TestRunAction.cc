@@ -51,7 +51,7 @@ void Acrylic_TestRunAction::BeginOfRunAction(const G4Run* aRun)
     // index 0
     analysisManager->CreateH1("Photons", "Bins: 1=Primaries, 2=Detected, 3=WLSPhotons", 10, 0., 10.);
     
-    // index 2
+    // index 1
     analysisManager->CreateH1("PhotonFate", "Bins: 0=Undefined, 1=X-Plate, 2=Y-Plate, 3=Z-Plate, 4=Cell Absorption, 5=TPB Absorption, 8=Trapped, 9=Not Trapped", 10, 0., 10.);
     
 

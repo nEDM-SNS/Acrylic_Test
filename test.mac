@@ -12,5 +12,5 @@
 
 /gps/position 0 -0.650 0 cm # Just below cell
 #/gps/position 0 0 0 cm # Center of cell
-/WLS_Test/run/setFileName Test
+/Acrylic_Test/run/setFileName Test
 /run/beamOn 100

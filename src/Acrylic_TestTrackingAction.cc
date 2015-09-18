@@ -13,7 +13,11 @@
 
 void Acrylic_TestTrackingAction::PreUserTrackingAction(const G4Track* aTrack)
 {
+    Acrylic_TestTrackInformation* trackInfo = new Acrylic_TestTrackInformation();
     
+    fpTrackingManager->SetUserTrackInformation(trackInfo);
+    
+
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
     if (aTrack->GetParentID()==0) {
@@ -42,13 +46,13 @@ void Acrylic_TestTrackingAction::PostUserTrackingAction(const G4Track * aTrack)
     
     G4int status = trackInfo->GetStatus();
     
-    analysisManager->FillH1(2, status);
+    analysisManager->FillH1(1, status);
     
     if (status == 3 || status ==4 || status == 5) {
-        analysisManager->FillH1(2, 9);
+        analysisManager->FillH1(1, 9);
     }
     else if (status == 1 || status ==2)
     {
-        analysisManager->FillH1(2, 8);
+        analysisManager->FillH1(1, 8);
     }
 }
