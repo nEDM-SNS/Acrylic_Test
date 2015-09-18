@@ -1,7 +1,7 @@
 /gps/particle opticalphoton
 #/gps/energy 2.01 eV #Low energy photon
 #/gps/energy 2.95 eV #blue photon
-/gps/energy 12 eV
+#/gps/energy 12 eV
 
 
 /gps/ang/type beam1d
@@ -12,5 +12,67 @@
 
 /gps/position 0 0.650 0 cm # Just below cell
 #/gps/position 0 0 0 cm # Center of cell
-/Acrylic_Test/run/setFileName Test
-/run/beamOn 100
+
+
+
+
+/gps/energy 2.1 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_2.1eV
+/run/beamOn 10000
+
+/gps/energy 2.3 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_2.3eV
+/run/beamOn 10000
+
+/gps/energy 2.5 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_2.5eV
+/run/beamOn 10000
+
+/gps/energy 2.7 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_2.7eV
+/run/beamOn 10000
+
+/gps/energy 2.9 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_2.9eV
+/run/beamOn 10000
+
+/gps/energy 3.1 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_3.1eV
+/run/beamOn 10000
+
+/gps/energy 3.3 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_3.3eV
+/run/beamOn 10000
+
+/gps/energy 3.5 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_3.5eV
+/run/beamOn 10000
+
+/gps/energy 3.7 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_3.7eV
+/run/beamOn 10000
+
+/gps/energy 3.9 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_3.9eV
+/run/beamOn 10000
+
+/gps/energy 4.1 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.1eV
+/run/beamOn 10000
+
+/gps/energy 4.3 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.3eV
+/run/beamOn 10000
+
+/gps/energy 4.5 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.5eV
+/run/beamOn 10000
+
+/gps/energy 4.7 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.5eV
+/run/beamOn 10000
+
+/gps/energy 4.9 eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.9eV
+/run/beamOn 10000
+

@@ -496,22 +496,22 @@ void NedmMaterials::CreateMaterials()
 
     
     G4double absTPB[] =
-    {10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m,
-        5.*m, 5.*m, 5.*m, 5.*m, 5.*m, 1.*m, 1.*m, 1.*m, 1.*m, 1.*m,
-        50.*cm, 50.*cm, 50.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm,
-        20.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm, 10.*cm, 7.5*cm, 4.*cm, 1.*cm, 6.*mm,
-        3.*mm, 2.*mm, 1.*mm, 1.*mm, 1.*mm, 1.*nm, 1.*nm, 1.*nm, 1.*nm, 1.*nm,
-        1.*nm, 1.*nm, 1.*nm, 1.*nm, 1.*nm};
+    {1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km,
+        1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 0.3*mm, 0.12*mm,
+        0.25*mm, 0.019*mm, 0.004*mm, 0.004*mm, 0.004*mm, 0.004*mm, 0.004*mm, 0.004*mm, 0.004*mm, 0.004*mm,
+        0.004*mm, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m,
+        10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 0.018*mm, 0.018*mm, 0.018*mm, 10.*m, 10.*m,
+        10.*m, 10.*m, 10.*m, 10.*m, 10.*m};
     
     assert(sizeof(absTPB) == sizeof(acrylicPhotonEnergy));
-
+    
     G4double absWLSTPB[] =
-    {10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m, 10.*m,
-        5.*m, 5.*m, 5.*m, 5.*m, 5.*m, 1.*m, 1.*m, 1.*m, 1.*m, 1.*m,
-        50.*cm, 50.*cm, 50.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm,
-        20.*cm, 20.*cm, 20.*cm, 20.*cm, 20.*cm, 10.*cm, 7.5*cm, 4.*cm, 1.*cm, 6.*mm,
-        3.*mm, 2.*mm, 1.*mm, 1.*mm, 1.*mm, 1.*nm, 1.*nm, 1.*nm, 1.*nm, 1.*nm,
-        1.*nm, 1.*nm, 1.*nm, 1.*nm, 1.*nm};
+    {1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km,
+        1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km, 1.*km,
+        0.045*mm, 0.027*mm, 0.01*mm, 0.01*mm, 0.01*mm, 0.01*mm, 0.01*mm, 0.01*mm, 0.01*mm, 0.01*mm,
+        0.01*mm, 10.*m, 10.*m, 10.*m, 10.*m, 0.027*mm, 0.027*mm, 0.027*mm, 10.*m, 10.*m,
+        10.*m, 10.*m, 10.*m, 10.*m, .05*mm, .05*mm, .05*mm, .05*mm, .05*mm, .05*mm,
+        .05*mm, .05*mm, .05*mm, .05*mm, .05*mm};
     
     assert(sizeof(absWLSTPB) == sizeof(acrylicPhotonEnergy));
     
