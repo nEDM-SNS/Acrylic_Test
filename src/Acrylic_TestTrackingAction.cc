@@ -27,7 +27,20 @@ void Acrylic_TestTrackingAction::PreUserTrackingAction(const G4Track* aTrack)
     
     else{
         if (aTrack->GetCreatorProcess()->GetProcessName() == "OpWLS") {
-            analysisManager->FillH1(0, 3);
+            if (aTrack->GetOriginTouchable()->GetVolume()->GetName()=="TPBInterface") {
+                analysisManager->FillH1(0, 3);
+                analysisManager->FillH1(0, 5);
+            }
+            else if (aTrack->GetOriginTouchable()->GetVolume()->GetName()=="TPBInterface_outer")
+            {
+                analysisManager->FillH1(0, 4);
+                analysisManager->FillH1(0, 5);
+            }
+            else
+            {
+                analysisManager->FillH1(0, 6);
+            }
+            
         }
         else{
             G4cout << "Process Name = " << aTrack->GetCreatorProcess()->GetProcessName() << G4endl;
@@ -48,10 +61,7 @@ void Acrylic_TestTrackingAction::PostUserTrackingAction(const G4Track * aTrack)
     
     analysisManager->FillH1(1, status);
     
-    if (status == 3 || status ==4 || status == 5) {
-        analysisManager->FillH1(1, 9);
-    }
-    else if (status == 1 || status ==2)
+    if (status == 1 || status ==3)
     {
         analysisManager->FillH1(1, 8);
     }

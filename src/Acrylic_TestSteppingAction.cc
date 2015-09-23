@@ -88,14 +88,17 @@ void Acrylic_TestSteppingAction::UserSteppingAction(const G4Step* aStep)
             
             if (theGlobalNormal == G4ThreeVector(1,0,0) || theGlobalNormal == G4ThreeVector(-1,0,0)) {
                 //G4cout << "***X-Plate Exit***" << G4endl;
+                //G4cout << "Position: " << thePostPoint->GetPosition() << G4endl;
                 trackInfo->SetStatus(1);
             }
             else if (theGlobalNormal == G4ThreeVector(0,1,0) || theGlobalNormal == G4ThreeVector(0,-1,0)) {
                 //G4cout << "***Y-Plate Exit***" << G4endl;
+                //G4cout << "Position: " << thePostPoint->GetPosition() << G4endl;
                 trackInfo->SetStatus(2);
             }
             else if (theGlobalNormal == G4ThreeVector(0,0,1) || theGlobalNormal == G4ThreeVector(0,0,-1)) {
                 //G4cout << "***Z-Plate Exit***" << G4endl;
+                //G4cout << "Position: " << thePostPoint->GetPosition() << G4endl;
                 trackInfo->SetStatus(3);
             }
             

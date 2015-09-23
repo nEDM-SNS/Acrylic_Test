@@ -6,11 +6,11 @@
 
 /gps/ang/type beam1d
 #/gps/ang/type iso
-#/gps/direction 0 -1 0
-/gps/direction 1 -1 0
+/gps/direction 0 -1 0
+#/gps/direction 1 0 0
 /gps/polarization 0 0 1 # dummy polarization
 
-/gps/position 0 0.650 0 cm # Just below cell
+/gps/position 0 0.650 0 cm # Just above cell
 #/gps/position 0 0 0 cm # Center of cell
 
 
@@ -69,7 +69,7 @@
 /run/beamOn 10000
 
 /gps/energy 4.7 eV
-/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.5eV
+/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.7eV
 /run/beamOn 10000
 
 /gps/energy 4.9 eV
