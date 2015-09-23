@@ -12,14 +12,14 @@
 
 /gps/position 0 0.650 0 cm # Just above cell
 #/gps/position 0 0 0 cm # Center of cell
-#/Acrylic_Test/run/setFileName Test
+/Acrylic_Test/run/setFileName Test
+/run/beamOn 10000
+
+#/gps/energy 4.5 eV
+#/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.5eV
 #/run/beamOn 10000
 
-/gps/energy 4.5 eV
-/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.5eV
-/run/beamOn 10000
 
-
-/gps/energy 4.7 eV
-/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.7eV
-/run/beamOn 10000
+#/gps/energy 4.7 eV
+#/Acrylic_Test/run/setFileName output/TPBOF_0.1/Trans_4.7eV
+#/run/beamOn 10000
